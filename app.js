@@ -23,6 +23,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/battle',battleRouter)
+app.get('/starter/:id',(req,res) => {
+  console.log(req.params.id)
+  axios.get( `https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
+  .then( resp => {
+    //console.log(resp)
+    res.render('pokemon',{pokemon:resp.data})
+  }).catch( err => res.send('NotFound'))
+})
 app.get('/starter',(req,res) => {
   let id_1  = axios.get( `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 735)}`)
   let id_2  = axios.get( `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 735)}`)

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="d-flex justify-content-center">
+            <h1><%=pokemon.name%></h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            <img src="<%=pokemon.sprites.front_default%>" alt="">
+            <img src="<%=pokemon.sprites.back_default%>" alt="">
+        </div>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col justify-content-between text-end ">
+                    <% for(let i = 0; i < pokemon.types.length;i++){ %>
+                    <p class="m-0"><strong>Type:</strong><%=pokemon.types[i].type.name%></p>
+                    <%}%>
+                    <p><strong>Weight:</strong><%=pokemon.weight%></p>
+                
+                    <% for(let i = 0; i < pokemon.stats.length;i++){ %>
+                    <p class="m-0"><strong><%=pokemon.stats[i].stat.name%>:</strong><%=pokemon.stats[i].base_stat%></p>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+        <h3>Pick Your Moves:</h3>
+        <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+            <% for(let i = 0; i < pokemon.moves.length;i++){ %>
+                <input type="checkbox" class="btn-check" id="<%=pokemon.moves[i].move.name%>" autocomplete="off">
+                <label class="btn btn-outline-primary" for="<%=pokemon.moves[i].move.name%>"><%=pokemon.moves[i].move.name%></label>
+            <%}%>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>
